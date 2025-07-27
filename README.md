@@ -23,6 +23,17 @@ A simple, configurable 3D model viewer for local OBJ/MTL/PLY/FBX files, built wi
 3. **Open in browser:**
    - Open `index.html` directly in your browser (no build step required).
 
+## Running a Local Server
+
+To view models and textures correctly, you must run a local HTTP server. For example:
+
+```sh
+cd local3dviewer
+python -m http.server
+```
+
+Then open `http://localhost:8000` in your browser.
+
 ## File Structure
 - `index.html` — Main HTML file
 - `app.js` — Main application logic
