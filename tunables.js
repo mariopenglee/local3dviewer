@@ -6,7 +6,7 @@ export const TUNABLES = {
     { name: "model2", exts: ["obj"] },
     { name: "model3", exts: ["obj"] },
   ],
-  refreshInterval: 10 * 60 * 1000, // ms
+  refreshInterval: 30 * 1000, // ms
   camera: {
     fov: 100,
     aspect: window.innerWidth / window.innerHeight,

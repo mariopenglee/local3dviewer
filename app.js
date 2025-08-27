@@ -61,25 +61,20 @@ function init() {
 
   loadModels();
   setInterval(() => {
+    console.log('Refreshing models...');
     clearModels();
     loadModels();
   }, TUNABLES.refreshInterval);
 }
 
 function loadModels() {
+  console.log('Loading models...');
   const availableModels = TUNABLES.modelList;
   const modelFolder = TUNABLES.modelFolder;
-  const modelsToLoad = availableModels.filter(m => m.exts.some(ext => {
-    try {
-      // Check for the file in its own folder
-      const req = new XMLHttpRequest();
-      req.open('HEAD', `${modelFolder}${m.name}/${m.name}.${ext}`, false);
-      req.send();
-      return req.status !== 404;
-    } catch {
-      return false;
-    }
-  }));
+  
+  // Instead of checking file existence, just try to load all models
+  // The loaders will handle missing files gracefully
+  const modelsToLoad = availableModels;
 
   for (let i = 0; i < modelsToLoad.length; i++) {
     // Place models randomly near the center, all on the ground (y = 0)
@@ -165,6 +160,7 @@ function getLoaderForExtension(ext) {
 }
 
 function clearModels() {
+  console.log(`Clearing ${models.length} models...`);
   models.forEach((model) => scene.remove(model));
   models = [];
 }
